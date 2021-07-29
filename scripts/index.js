@@ -59,8 +59,8 @@ initInfoMap();
     selectBarYear = d3.select("#barSelect");
 
     selectBarYear.on("change", changeBars);
-    var medalsData = await d3.csv("../resources/data/CSV-medals-History.csv");
-    const CountryName = await d3.csv("../resources/data/noc_regions.csv");
+    var medalsData = await d3.csv("./resources/data/CSV-medals-History.csv");
+    const CountryName = await d3.csv("./resources/data/noc_regions.csv");
 
     medalsData.map( record => {
         let r = record;
