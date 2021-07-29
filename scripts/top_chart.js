@@ -1,14 +1,14 @@
 
 class TopChart {
 
-    margin;
-    pixelSize = 55;
-    width =0 ; height = 0;
-    slideVal = 0;
-    xAttr = "Country";
-    filteredData;
-    Tooltip;
-    parseTime;
+    // margin;
+    // pixelSize = 55;
+    // width =0 ; height = 0;
+    // slideVal = 0;
+    // xAttr = "Country";
+    // filteredData;
+    // Tooltip;
+    // parseTime;
     constructor(width , height ,data , margin)
     {
 
@@ -61,25 +61,7 @@ class TopChart {
     }
 
       // Three function that change the tooltip when user hover / move / leave a cell
-    mouseover = function(d, that) {
-        //Tooltip =   d3.select("#tooltip");
-        console.log("that "  +that);
-        Tooltip
-            .style("opacity", 1)
-            .html('<u>' + d.Country + '</u>' + "<br>" +
-                '<u>' + d.Year + '</u>' + "<br>" +
-                d.GrandTotal + " medals")
-                .style("left", (d3.event.pageX)+10 + "px") 
-                .style("top", (d3.event.pageY)+20 + "px");
-    }
-    mousemove = function(d) {
-    }
-    mouseleave = function(d) {
-        Tooltip =   d3.select("#Circletooltip");
-        Tooltip
-            .style("opacity", 0);
-     }
-
+   
     drawChart(filteredData) {
         this.pixelSize = 80   
     //    for(var i = 0 ; i < filteredData.length ; i++)

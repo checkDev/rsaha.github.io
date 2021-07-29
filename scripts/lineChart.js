@@ -3,13 +3,13 @@
 
 class LineChart{
 
-    width; height; lineSvg; margin;topCountryCount;
-    topCountries = [];
-    countryEnum;
-    xAxis; yAxis; xScale; yScale;
-    parseTime;
-    minMedals;
-    maxMedals;
+    // width; height; lineSvg; margin;topCountryCount;
+    // topCountries = [];
+    // countryEnum;
+    // xAxis; yAxis; xScale; yScale;
+    // parseTime;
+    // minMedals;
+    // maxMedals;
 
     
     constructor(width, height , data , margin)
@@ -38,16 +38,16 @@ class LineChart{
         this.minMedals = 0;
     }
 
-     Countries = {
-        USA: "USA",
-        GER: "GER",
-        GBR: "GBR",
-        CHN: "CHN",
-        RUS: "RUS",
-        KOR: "KOR",
-        ITA: "ITA",
-        AUS: "AUS"
-    }
+    //  Countries = {
+    //     USA: "USA",
+    //     GER: "GER",
+    //     GBR: "GBR",
+    //     CHN: "CHN",
+    //     RUS: "RUS",
+    //     KOR: "KOR",
+    //     ITA: "ITA",
+    //     AUS: "AUS"
+    // }
     createYAxis()
     {
         this.yAxis =  this.lineSvg.append("g")

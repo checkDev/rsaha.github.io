@@ -17,7 +17,7 @@ function changeSceneforBar()
     arr = [];
  
        var datesData =  dataVal.filter(function(d) {  
-           //console.log(" d=." , d);
+           console.log(" d=." , d);
             return (d.Year.getFullYear() >= startDate && d.Year.getFullYear() <= endDate); 
         });
        // console.log(" d=>" , datesData);

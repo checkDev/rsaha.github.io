@@ -16,16 +16,16 @@
  //var chartwidth = 880, chartheight = 320;
 
  class BarChart {
-    xscaleChart;
-    yscaleChart;
-    subGroups;
-    filteredData;
-    svgBar;
-    data;
-    colorLegendGold;
-    colorLegendBronze;
-    colorLegendSilver; 
-    parseTime;
+    // xscaleChart;
+    // yscaleChart;
+    // subGroups;
+    // filteredData;
+    // svgBar;
+    // data;
+    // colorLegendGold;
+    // colorLegendBronze;
+    // colorLegendSilver; 
+    // parseTime;
     constructor(width , height , data  , margin )
      {
             this.parseTime = d3.timeParse("%Y");
