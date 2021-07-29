@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>History of Olympics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link   rel="stylesheet" href="./css/style.css"/>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <script src= "./scripts/index.js"></script>
+    <script src= "./scripts/top_chart.js"></script>
+    <script src= "./scripts/barchart.js"></script>
+    <script src= "./scripts/lineChart.js"></script>
+</head>  
+
+<body onload='init()'>
+ 
+<div class="topnav" id="title">
+    <h1 style="text-align:center">Advent of USA in Summer Olympic Games along the History</h1>
+</div>
+
+
+<!-- scene Buttons -->
+  <!-- <div id= "scene_Button" class ="button">prev </button> -->
+ 
+
+
+  <div class="column left">
+    <div style="height: 20px;">
+        <br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="scene-btn" class="card"  style="padding:16px 0 16px 0">
+      <button id= "prev_Button"  onclick="prevTrig()" >prev </button>
+      <button id= "page_0"  onclick="sceneTrig(0)" >1</button>
+      <button id= "page_1"   onclick="sceneTrig(1)">2</button>
+      <button id= "page_2"   onclick="sceneTrig(2)">3</button>
+      <button id= "page_3"   onclick="sceneTrig(3)">4</button>
+      <button id= "page_4"   onclick="sceneTrig(4)">5</button>
+      <button id= "page_5"   onclick="sceneTrig(5)">6</button>
+      <button id= "next_Button"  onclick="nextTrig()" > next </button>
+        <!-- <button id="prev-button">Prev</button>
+         <div id="scene-btn"></div> 
+        <button id="next-button">Next</button> -->
+    </div>
+    <div style="height: 20px;">
+        <br>
+    </div>
+    <div style="height: 20px;">
+        <br>
+    </div>
+    <div id="infoScene" class="card"></div>
+</div>
+
+<div class="main" id="viz">
+    <h4>Olympic Medals</h4>
+    <div id="labelforYear"></div> 
+    <div id="linechart" style="width: 95%; margin: auto;"></div>
+    <h4>Medal Details for Top Performing Countries</h4>
+    <label for="barSelect" style="font-size: 14px;">Select a Year:</label>
+    <select id="barSelect" style="font-size: 14px;">
+        <option value="o1">1896</option>
+        <option value="o2">1990</option>
+    </select>
+    <div class="wrapper">
+    <div id="contentChart" style="width: 95%; margin: auto;"> </div>
+    <div id="barchart" style="width: 95%; margin: auto;"></div>
+   </div>
+    <div id="Circletooltip" class="Circletooltip"></div>
+    <div id="tooltip" class="tooltip"></div>
+    <div id="bartooltip" class="tooltip" style="height: 140px;"></div>
+</div>
+</body>
+  <!-- <div class="row">
+    <div class="column">
+        <h2>Summer Olympics Events</h2>
+     <div id="infoScene" class="column">
+      "For athletes, the Olympics are the ultimate test of their worth."
+      - Mary Lou Retton (American gymnast, 1984 Summer Olympics)
+    </div>
+    </div>
+  
+<div class="main" id="dataviz_buttonTriger"> 
+  <div id ="body_Container"></div>
+  <div id ="contentChart"></div>
+  <div id="barchart" > </div>
+  <div id="tooltip" class="tooltip"></div>
+  <div id="bartooltip" class="tooltip" style="height: 140px;"></div>
+  <div id="linechart"> </div>
+</div>
+
+<div id="container">
+  <div id="floated-imgs">
+    <br>
+    <br>
+    <br>
+    <br>
+      <img id= "img1" src="images/olympics-main-khu-210610.jpeg",alt="logo" width="240" height="160">
+      <br>
+      <img id = "img2" src="images/Silhouette-hand-sport-torch-flag-rings-Olympic-February-3-2015.jpeg"
+      ,alt="imaage" width="240" height="160">
+  </div>
+</div>   
+</body> -->
+
+
+
+</html>
