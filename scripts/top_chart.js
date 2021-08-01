@@ -1,17 +1,10 @@
 
 class TopChart {
 
-    // margin;
-    // pixelSize = 55;
-    // width =0 ; height = 0;
-    // slideVal = 0;
-    // xAttr = "Country";
-    // filteredData;
-    // Tooltip;
-    // parseTime;
-    constructor(width , height ,data , margin)
+    constructor(width , height ,data , margin ,colorScheme)
     {
 
+        this.colorScheme = colorScheme;
         this.parseTime = d3.timeParse("%Y");
         this.width = width;
         this.height = height;
@@ -19,8 +12,8 @@ class TopChart {
         this.margin = margin;
         this.svg = this.createChart();
         this.color  = d3.scaleOrdinal()
-                    .domain(data.map(d => d.Country))
-                    .range(d3.schemeCategory10);
+                    .domain(data.map(d => d.Country.trim()))
+                    .range(this.colorScheme);
         this.size = d3.scaleLinear() // can be Dynamic ??
                     .domain([0, d3.max(d => d.GrandTotal)])
                     .range([7,100])  // circle will be between 7 and 100 px wide
@@ -60,15 +53,11 @@ class TopChart {
 
     }
 
-      // Three function that change the tooltip when user hover / move / leave a cell
+    
    
     drawChart(filteredData) {
         this.pixelSize = 80   
-    //    for(var i = 0 ; i < filteredData.length ; i++)
-    //      console.log(filteredData[i]); 
-       var color  = d3.scaleOrdinal()
-                .domain(filteredData.map(d=> d[this.xAttr]))
-                .range(d3.schemeCategory10);
+ 
         
        var size = d3.scaleLinear() // can be Dynamic ??
         .domain([0, 500])
@@ -79,14 +68,14 @@ class TopChart {
         .data(filteredData)
         var elemEnter = elem.enter()
         .append("g")
-        .attr("transform", function(d){return "translate(80)"})
+        .attr("transform", function(d){return "translate(10)"})
 
         var wi = this.width, hi = this.height; 
         
         var Tooltip =   d3.select("#Circletooltip");
         // console.log("that "  +that);
         
-         
+        var color = this.color;
         var node = elemEnter
             .append("circle")
             .attr("class", "node")
@@ -118,13 +107,7 @@ class TopChart {
            
         } )
 
-        // elemEnter.append("text")
-        //     .attr("dx", function (d) {
-        //     return -20
-        //      })
-        //     .text(function (d) {
-        //             return d.Country;
-        //     })
+    
 
       var nodeText =  elemEnter
             .append("text")
@@ -140,22 +123,12 @@ class TopChart {
             .text(d => d.Country);
 
 
-
-        // .call(d3.drag() // call specific function when circle is dragged
-        //      .on("start", dragstarted)
-        //      .on("drag", dragged)
-        //      .on("end", dragended));
-
-
-// Features of the forces applied to the nodes:
   var simulation = d3.forceSimulation()
       .force("center", d3.forceCenter().x(wi / 2).y(hi / 2)) // Attraction to the center of the svg area
       .force("charge", d3.forceManyBody().strength(.1)) // Nodes are attracted one each other of value is > 0
       .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (size(d.GrandTotal)+3) }).iterations(1)) // Force that avoids circle overlapping
 
-  // Apply these forces to the nodes and update their positions.
-  // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
-  simulation
+   simulation
       .nodes(filteredData)
       .on("tick", function(d){
         node

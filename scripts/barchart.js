@@ -1,31 +1,4 @@
-//Global Vars
-
-// var currentSlide = 0;
-// var transitionTimer = 100;
-// var infoMap = [];
-// var coords = [];
-
-// var navTimer;
-// var chartStartDate, startDate, endDate;
-// var playButton, prevButton, nextButton;
-// var targetValue, currentValue = 0;
-// var sliderSVG, xsl, slider, handle, label, intro;
-// var chartSVG, xscaleChart, xAxis, yscaleChart, yAxis, minCases, maxCases, casesPlot, deathsPlot, dataset, diffDays, filteredData;
-// var bars, tooltip, tooltipLine, bartooltip, tipBox, barTipBox, yscaleLegend, xscaleLegend, yscaleLegendBar, xscaleLegendBar;
-// ///////////// Line chart coords
- //var chartwidth = 880, chartheight = 320;
-
- class BarChart {
-    // xscaleChart;
-    // yscaleChart;
-    // subGroups;
-    // filteredData;
-    // svgBar;
-    // data;
-    // colorLegendGold;
-    // colorLegendBronze;
-    // colorLegendSilver; 
-    // parseTime;
+class BarChart {
     constructor(width , height , data  , margin )
      {
             this.parseTime = d3.timeParse("%Y");
@@ -41,9 +14,68 @@
             this.colorLegendGold= '#FF8C00';
             this.colorLegendSilver ='#EEF5DB';
             this.createColorLegendForMedals();
+            this.xbarScale =0;
+            this.ybarScale =0;
            
      }
+     clearBarChartAnnotation()
+    {
+        console.log("clearBarChartAnnotation");
+        let barChart = this.svgBar;
+        barChart.selectAll("#antCir").remove();
+        barChart.selectAll("#antPath").remove();
+        barChart.selectAll("#antText").remove();
 
+    }
+
+     annotateBarChart(x,y , ax, ay, textx, texty ,textVal )
+     {
+         console.log("annotateLineChart --");
+         let barChart = this.svgBar;
+         var xcoord = 0,
+             ycoord = 0,
+          x2coord = 0,
+             y2coord = 0;
+        let offsetPadding =4;
+         let xscaleChart= this.xbarScale;
+         let yscaleChart = this.ybarScale;
+         let timeParse = this.parseTime;
+         barChart.append("circle")
+         .transition().duration(900)
+         .attr("id", "antCir")
+         .style("opacity", "0.5")
+         .style("border", "2px")
+         .style("stroke", "blue")
+         .attr("cx", function() {
+             xcoord = xscaleChart(x)+offsetPadding;
+             return xcoord;
+         })
+         .attr("cy", function() {
+             ycoord = yscaleChart(y);
+             return ycoord + 1;
+         })
+         .attr("r", 10);
+     //console.log("xcoord:" + xcoord + ", ycoord:" + ycoord + " - currentSlide]: " + currentSlide);
+     x2coord = xcoord + ax;
+     y2coord = ycoord + ay;
+     barChart.append("line")
+         .transition().duration(900)
+         .style("stroke", "blue")
+         .attr("id", "antPath")
+         .attr("stroke", "black")
+         .attr("stroke-width", 1.5)
+         .attr("x1", xcoord+offsetPadding)
+         .attr("y1", ycoord)
+         .attr("x2", x2coord)
+         .attr("y2", y2coord)
+ 
+         barChart.append("text")
+         .transition().duration(900)
+         .attr("id", "antText")
+         .attr("x", x2coord + textx)
+         .attr("y", y2coord + texty)
+         .text(textVal);
+     }
      createColorLegendForMedals(){
     
         var offset = 80;
@@ -113,25 +145,9 @@
     }
 
 
-    clearAnnotation()
-    {
+    
 
-    }
-
-    infoUpdateBar(slide)
-    {
-        this.slideVal = slide;
-
-    }
-
-    annotateBar() {
-           //do based on the slide
-    }
-
-    toggleSceneBtns() {
-
-    }
-
+   
 
     drawChart(filteredData) {
 
@@ -146,21 +162,48 @@
             .domain(groups)
             .range([0, this.width])
             .padding([0.3]);
+
+        this.xbarScale = x;       
         
         var xAxisBar = this.svgBar.append("g")
             .attr("transform", "translate(0," + this.height + ")")
             .call(d3.axisBottom(x).tickSizeOuter(0));
+
+
         
         xAxisBar.selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-45)")
             .style("text-anchor", "end");  
+
+
+            this.svgBar.append("g") 
+            .attr("transform", "translate(220," + this.height  + ")") 
+                .append("text")
+                    .attr("class", "axis-title")
+                    .attr("y", 40)
+                    .attr("dy", ".71em")
+                    .style("text-anchor", "end")
+                    .attr("fill", "#5D6971")
+                    .text("Country"); 
+
+
+            this.svgBar.append("g") 
+            .attr("transform", "translate(-50," + 8 + ")") 
+                .append("text")
+                    .attr("class", "axis-title")
+                    .attr("transform", "rotate(-90)")
+                    .attr("y", 6)
+                    .attr("dy", ".71em")
+                    .style("text-anchor", "end")
+                    .attr("fill", "#5D6971")
+                    .text("Medals"); 
            
        // let subGroups = this.subGroups;    
         // color palette = one color per subgroup
         var color = d3.scaleOrdinal()
             .domain(this.subGroups)
             .range(['#B0E0E6','#FF8C00','#EEF5DB'])
-        //stack the data? --> 
+   
 
         var stackedData = d3.stack()
                 .keys(this.subGroups)
@@ -171,13 +214,15 @@
         var maxVal =  d3.max(stackedData , function(d) {
             //console.log( "values " + d );
             return d3.max(d , function(dx) {
-            return dx[1];
+                return dx[1];
             });
         });
 
         var y = d3.scaleLinear()
             .domain([0, maxVal])//put max val here of medals
             .range([ this.height, 0 ]);
+
+        this.ybarScale = y;    
   
         this.svgBar.append("g")
             .call(d3.axisLeft(y));

@@ -6,19 +6,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link   rel="stylesheet" href="./css/style.css"/>
+    <link   rel="stylesheet" href="./css/intro-min.css"/>
     <script src="https://d3js.org/d3.v5.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v3.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src= "./scripts/index.js"></script>
     <script src= "./scripts/top_chart.js"></script>
     <script src= "./scripts/barchart.js"></script>
     <script src= "./scripts/lineChart.js"></script>
+    <script src= "./scripts/intro-min.js"></script>
 </head>  
 
 <body onload='init()'>
  
 <div class="topnav" id="title">
-    <h1 style="text-align:center">Advent of USA in Summer Olympic Games along the History</h1>
+    <h1 style="text-align:center" >Advent of USA in Summer Olympic Games along the History</h1>
 </div>
 
 
@@ -28,7 +29,7 @@
 
 
   <div class="column left">
-    <div style="height: 20px;">
+    <div style="height: 10px;">
         <br>
     </div>
     <br>
@@ -38,81 +39,45 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <div id="scene-btn" class="card"  style="padding:16px 0 16px 0">
+    <div id="scene-btn" class="card"  style="padding:10px 0 10px 0" data-intro="Please use the buttons to navigate the scenes" data-step="1" data-position="bottom" >
       <button id= "prev_Button"  onclick="prevTrig()" >prev </button>
       <button id= "page_0"  onclick="sceneTrig(0)" >1</button>
       <button id= "page_1"   onclick="sceneTrig(1)">2</button>
       <button id= "page_2"   onclick="sceneTrig(2)">3</button>
       <button id= "page_3"   onclick="sceneTrig(3)">4</button>
       <button id= "page_4"   onclick="sceneTrig(4)">5</button>
-      <button id= "page_5"   onclick="sceneTrig(5)">6</button>
       <button id= "next_Button"  onclick="nextTrig()" > next </button>
         <!-- <button id="prev-button">Prev</button>
          <div id="scene-btn"></div> 
         <button id="next-button">Next</button> -->
     </div>
-    <div style="height: 20px;">
+    <div style="height: 10px;">
         <br>
     </div>
-    <div style="height: 20px;">
+    <div style="height: 10px;">
         <br>
     </div>
-    <div id="infoScene" class="card"></div>
+    <div id="infoScene" class="card" style="padding:10px 0 10px 0" data-intro="Information about the important events that have occurred per scene" data-step="2" data-position="bottom" ></div>
 </div>
 
 <div class="main" id="viz">
     <h4>Olympic Medals</h4>
     <div id="labelforYear"></div> 
-    <div id="linechart" style="width: 95%; margin: auto;"></div>
+    <div id="linechart" style="width: 95%; margin: auto" data-intro="Line chart demonstrating the performance of 9 Countries across ages" data-step="3" data-position="top"></div>
     <h4>Medal Details for Top Performing Countries</h4>
-    <label for="barSelect" style="font-size: 14px;">Select a Year:</label>
-    <select id="barSelect" style="font-size: 14px;">
+    <label for="barSelect" style="font-size: 12px;"  >Select a Year:</label>
+    <select id="barSelect" style="font-size: 12px;"data-intro="You can use this to select the year in a scene to see the distribution of medals in the charts below." data-step="4" data-position="bottom">
         <option value="o1">1896</option>
         <option value="o2">1990</option>
     </select>
     <div class="wrapper">
-    <div id="contentChart" style="width: 95%; margin: auto;"> </div>
-    <div id="barchart" style="width: 95%; margin: auto;"></div>
+    <div id="contentChart" style="width: 100%; margin: auto;" data-intro="Medal Distribution amongst all the Countries of the world in specific year.
+    Please hover over the circles to view more details on the distribution." data-step="5" data-position="bottom"> </div>
+    <div id="barchart" style="width: 100%; margin: auto;" data-intro="Silver Gold Bronze Medal  Distribution amongst Top performing Countries of the world in specific year. You can hover of the chart to find more details" data-step="6" data-position="bottom"></div>
    </div>
-    <div id="Circletooltip" class="Circletooltip"></div>
+    <div id="Circletooltip" class="Circletooltip" ></div>
     <div id="tooltip" class="tooltip"></div>
-    <div id="bartooltip" class="tooltip" style="height: 140px;"></div>
+    <div id="bartooltip" class="tooltip" style="height: 80px;"></div>
 </div>
 </body>
-  <!-- <div class="row">
-    <div class="column">
-        <h2>Summer Olympics Events</h2>
-     <div id="infoScene" class="column">
-      "For athletes, the Olympics are the ultimate test of their worth."
-      - Mary Lou Retton (American gymnast, 1984 Summer Olympics)
-    </div>
-    </div>
-  
-<div class="main" id="dataviz_buttonTriger"> 
-  <div id ="body_Container"></div>
-  <div id ="contentChart"></div>
-  <div id="barchart" > </div>
-  <div id="tooltip" class="tooltip"></div>
-  <div id="bartooltip" class="tooltip" style="height: 140px;"></div>
-  <div id="linechart"> </div>
-</div>
-
-<div id="container">
-  <div id="floated-imgs">
-    <br>
-    <br>
-    <br>
-    <br>
-      <img id= "img1" src="images/olympics-main-khu-210610.jpeg",alt="logo" width="240" height="160">
-      <br>
-      <img id = "img2" src="images/Silhouette-hand-sport-torch-flag-rings-Olympic-February-3-2015.jpeg"
-      ,alt="imaage" width="240" height="160">
-  </div>
-</div>   
-</body> -->
-
-
-
 </html>
