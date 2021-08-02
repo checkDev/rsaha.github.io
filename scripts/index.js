@@ -239,6 +239,18 @@ function annotate() {
                          , annotationPoints[currentSlide].texty
                             ,annotationPoints[currentSlide].text );
 
+if(annotationPoints[currentSlide].x0 != null)
+{
+    lineChart.annotateLineChart(annotationPoints[currentSlide].x0
+        , annotationPoints[currentSlide].y0
+        , annotationPoints[currentSlide].ax0
+        , annotationPoints[currentSlide].ay0
+        , annotationPoints[currentSlide].textx0
+        , annotationPoints[currentSlide].texty0
+            ,annotationPoints[currentSlide].text0 );
+            
+}
+
       if(annotationPoints[currentSlide].x1 != null)
       {
         lineChart.annotateLineChart(annotationPoints[currentSlide].x1
@@ -381,11 +393,19 @@ annotationPoints.push({ //scene1
         "x": "1900",
         "date": "1900",
         "y": 185,
-        "ax": -50,
+        "ax": 0,
         "ay": -20,
         "text": "France Winning most medals till 1900",
-        "textx": 0,
+        "textx": -50,
         "texty": 0,
+        "x0": "1900",
+        "date0": "1900",
+        "y0": 55,
+        "ax0": 0,
+        "ay0": -40,
+        "text0": "USA number 3 in medal List in 1900",
+        "textx0": -50,
+        "texty0": 0,
         "x1": "1904",
         "date2": "1904",
         "y1": 390,
@@ -463,6 +483,14 @@ annotationPoints.push({ //scene1
         "ay": -80,
         "text": "Post World War-2 USA leading 5 years Olympics",
         "textx": -280,
+        "texty": 0,
+        "x": "1945",
+        "date": "1945",
+        "y": 10,
+        "ax": 0,
+        "ay": -140,
+        "text": "World War-2 till 1947, Olympics Cancelled",
+        "textx": -100,
         "texty": 0,
         "x1": "1972",
         "date2": "1972",

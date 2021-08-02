@@ -167,6 +167,7 @@ class BarChart {
         
         var xAxisBar = this.svgBar.append("g")
             .attr("transform", "translate(0," + this.height + ")")
+            .transition().duration(2000)
             .call(d3.axisBottom(x).tickSizeOuter(0));
 
 
@@ -225,6 +226,7 @@ class BarChart {
         this.ybarScale = y;    
   
         this.svgBar.append("g")
+            .transition().duration(2000)
             .call(d3.axisLeft(y));
         
         
