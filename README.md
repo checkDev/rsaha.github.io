@@ -1,2 +1,2 @@
 # rsaha.github.io
-d3 Narrative vix Project
+d3 Narrative vizualization Project
